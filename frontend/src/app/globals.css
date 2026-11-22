@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-primary: #F1F8FF;
+    --card-surface: #FFFFFF;
+    --border-subtle: #D0E2FF;
+    --text-primary: #0A2540;
+    --text-muted: #5B6B82;
+    --accent-saffron: #D97706;
+    --accent-blue: #1686CB;
+  }
+
+  .dark {
+    --bg-primary: #0B1730;
+    --card-surface: #14233D;
+    --border-subtle: #1E355B;
+    --text-primary: #F8FAFC;
+    --text-muted: #94A3B8;
+    --accent-saffron: #F28C28;
+    --accent-blue: #00E5FF;
+  }
+
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    overflow-x: hidden;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.3);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(242, 140, 40, 0.6);
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  background: rgba(20, 35, 61, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(30, 53, 91, 0.8);
+}
+.light .glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(208, 226, 255, 0.9);
+}
+
+/* Government Crest & Badge Gradients */
+.badge-gold {
+  background: linear-gradient(135deg, #F28C28 0%, #D97706 100%);
+  color: #FFFFFF;
+}
+.badge-blue {
+  background: linear-gradient(135deg, #1686CB 0%, #0369A1 100%);
+  color: #FFFFFF;
+}
