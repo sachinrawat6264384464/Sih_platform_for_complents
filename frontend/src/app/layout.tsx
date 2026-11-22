@@ -25,8 +25,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark">
-      <body className="min-h-screen bg-[#0B1730] text-slate-100 antialiased selection:bg-[#F28C28] selection:text-white">
+    <html lang="en" className="dark" suppressHydrationWarning>
+      <body
+        suppressHydrationWarning
+        className="min-h-screen bg-[#0B1730] text-slate-100 antialiased selection:bg-[#F28C28] selection:text-white"
+      >
         <QueryClientProvider client={queryClient}>
           <ThemeProvider>
             <CloudBackground />

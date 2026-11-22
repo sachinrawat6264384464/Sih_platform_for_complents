@@ -48,7 +48,14 @@ export default function DashboardPage() {
       const res = await api.get("/reports/dashboard");
       setMetrics(res.data);
     } catch (err: any) {
-      setError(err.response?.data?.detail || "Failed to load dashboard metrics");
+      const detail = err.response?.data?.detail;
+      const isConnError = !err.response || err.message === "Network Error" || err.code === "ERR_NETWORK";
+      setError(
+        detail ||
+          (isConnError
+            ? "Backend API is not running on http://localhost:8000. Please start it using 'start-backend.bat'."
+            : "Failed to load dashboard metrics")
+      );
     } finally {
       setLoading(false);
     }

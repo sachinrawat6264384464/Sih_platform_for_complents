@@ -75,6 +75,28 @@ async def get_current_user(
     return user
 
 
+async def get_optional_current_user(
+    auth_header: Optional[HTTPAuthorizationCredentials] = Security(security_scheme),
+    db: AsyncSession = Depends(get_db)
+) -> Optional[User]:
+    if not auth_header or not auth_header.credentials:
+        return None
+    try:
+        token = auth_header.credentials
+        payload = decode_token(token)
+        if not payload or payload.get("type") != "access":
+            return None
+        user_id_str = payload.get("sub")
+        if not user_id_str:
+            return None
+        user_uuid = UUID(user_id_str)
+        query = select(User).where(User.id == user_uuid)
+        result = await db.execute(query)
+        return result.scalar_one_or_none()
+    except Exception:
+        return None
+
+
 async def get_current_active_superuser(
     current_user: User = Depends(get_current_user)
 ) -> User:

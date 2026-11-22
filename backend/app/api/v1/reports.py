@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends, Response
+from typing import Optional
 from sqlalchemy.ext.asyncio import AsyncSession
-from app.api.deps import get_current_user, require_permission
+from app.api.deps import get_current_user, get_optional_current_user, require_permission
 from app.core.database import get_db
 from app.models.auth import User
 from app.schemas.reports import DashboardMetricsOut
@@ -10,7 +11,10 @@ router = APIRouter(prefix="/reports", tags=["Reports & Analytics"])
 
 
 @router.get("/dashboard", response_model=DashboardMetricsOut)
-async def get_dashboard_data(db: AsyncSession = Depends(get_db), current_user: User = Depends(get_current_user)):
+async def get_dashboard_data(
+    db: AsyncSession = Depends(get_db),
+    current_user: Optional[User] = Depends(get_optional_current_user)
+):
     metrics = await get_dashboard_metrics(db)
     return metrics
 
