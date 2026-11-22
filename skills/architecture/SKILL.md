@@ -21,3 +21,4 @@ AICTE Nexus is structured as a robust modular monolith:
 2. Every mutation must emit an entry to `audit_logs`.
 3. Never expose internal database IDs directly if UUIDs or canonical identifiers exist.
 4. Keep models strictly typed and validate all inputs with Pydantic.
+

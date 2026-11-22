@@ -31,3 +31,4 @@ class NotificationPreference(Base, UUIDMixin, TimestampMixin):
     overlap_alerts = Column(Boolean, default=True, nullable=False)
     sla_warnings = Column(Boolean, default=True, nullable=False)
     transfer_alerts = Column(Boolean, default=True, nullable=False)
+

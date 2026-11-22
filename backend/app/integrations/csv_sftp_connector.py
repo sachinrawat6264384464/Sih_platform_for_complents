@@ -63,3 +63,4 @@ class CSVSFTPConnector(BaseConnector):
             received_date=datetime.now(timezone.utc),
             raw_payload=raw_record,
         )
+

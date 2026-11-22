@@ -18,3 +18,4 @@ AICTE Nexus uses 7 dedicated agents coordinated by a centralized Supervisor:
 ## Non-Negotiable Constraint
 - AI agents NEVER finalize regulatory decisions, merge distinct complaints, or alter official institutional statuses automatically.
 - All AI suggestions generate an `approval_request` for authorized human review.
+

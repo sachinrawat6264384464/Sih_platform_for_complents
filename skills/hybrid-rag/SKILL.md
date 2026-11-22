@@ -14,3 +14,4 @@ description: Hybrid retrieval architecture combining BM25 keyword matching with 
    - `HybridScore = α * BM25NormalizedScore + (1 - α) * VectorCosineScore` (default `α = 0.40`).
 4. **Bureau & Role Access Filtering**: Before passing any retrieved context to the LLM or UI, filter chunks against the requesting user's bureau and clearance permissions.
 5. **Attribution & Citations**: Every generated synthesis must include verifiable citations pointing to original complaint IDs and document hashes.
+

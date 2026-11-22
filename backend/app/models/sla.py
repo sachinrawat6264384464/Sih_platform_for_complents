@@ -26,3 +26,4 @@ class SLAEvent(Base, UUIDMixin, TimestampMixin):
     event_type = Column(String(50), nullable=False)  # Warning, Breach, Escalated
     event_timestamp = Column(DateTime(timezone=True), nullable=False)
     remarks = Column(Text, nullable=True)
+

@@ -132,3 +132,4 @@ async def trigger_overlap_scan(
 ):
     candidates = await scan_complaint_for_overlaps(db, complaint_id)
     return {"message": f"Scan completed. Found {len(candidates)} new overlap candidates.", "candidates_count": len(candidates)}
+

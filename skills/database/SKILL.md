@@ -14,3 +14,4 @@ description: Database conventions, PostgreSQL configuration, Alembic migrations,
    - GIN trigram indexes (`gin_trgm_ops`) on institution names, aliases, complaint summaries for lightning-fast fuzzy search.
 5. **JSONB Columns**: Store structured metadata, raw source payloads, and vector embeddings in JSONB for schema flexibility and auditability.
 6. **Transactions**: Use `async with session.begin():` to guarantee atomic multi-table updates.
+

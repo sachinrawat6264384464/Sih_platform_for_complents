@@ -42,3 +42,4 @@ class SystemSettingOut(BaseModel):
 
     class Config:
         from_attributes = True
+

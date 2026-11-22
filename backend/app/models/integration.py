@@ -68,3 +68,4 @@ class IntegrationFailure(Base, UUIDMixin, TimestampMixin):
 
     # Relationships
     config = relationship("IntegrationConfig", back_populates="failures")
+

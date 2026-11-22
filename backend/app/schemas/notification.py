@@ -37,3 +37,4 @@ class NotificationPreferenceUpdate(BaseModel):
     overlap_alerts: Optional[bool] = None
     sla_warnings: Optional[bool] = None
     transfer_alerts: Optional[bool] = None
+

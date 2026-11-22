@@ -18,3 +18,4 @@ description: Security guidelines, credential protection, token handling, and dat
 5. **No Credential Leakage**:
    - API keys and database connection passwords strictly in `.env`.
    - Never echo credentials in error messages or logs.
+

@@ -55,3 +55,4 @@ class BaseConnector(ABC):
     def compute_payload_hash(self, raw_payload: Dict[str, Any]) -> str:
         serialized = json.dumps(raw_payload, sort_keys=True)
         return hashlib.sha256(serialized.encode("utf-8")).hexdigest()
+

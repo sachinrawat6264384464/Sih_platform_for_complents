@@ -91,3 +91,4 @@ async def root():
         "api_prefix": settings.API_V1_PREFIX,
         "status": "ONLINE",
     }
+

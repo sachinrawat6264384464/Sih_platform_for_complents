@@ -34,3 +34,4 @@ class DocumentVersion(Base, UUIDMixin, TimestampMixin):
 
     # Relationships
     document = relationship("Document", back_populates="versions")
+

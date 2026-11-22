@@ -71,3 +71,4 @@ class PGRCConnector(BaseConnector):
             received_date=reported_dt,
             raw_payload=raw_record,
         )
+

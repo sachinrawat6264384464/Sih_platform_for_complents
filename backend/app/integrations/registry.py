@@ -185,3 +185,4 @@ async def execute_sync_run(db: AsyncSession, config_id: UUID) -> SyncResult:
             records_failed=records_failed,
             error_message=str(exc),
         )
+

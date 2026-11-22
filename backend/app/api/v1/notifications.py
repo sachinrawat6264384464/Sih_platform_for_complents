@@ -83,3 +83,4 @@ async def update_preferences(
     await db.commit()
     await db.refresh(pref)
     return pref
+

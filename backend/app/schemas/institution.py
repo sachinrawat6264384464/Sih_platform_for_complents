@@ -91,3 +91,4 @@ class InstitutionListResponse(BaseModel):
     page: int
     limit: int
     pages: int
+

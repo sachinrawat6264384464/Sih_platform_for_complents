@@ -66,3 +66,4 @@ Key Extensions: `uuid-ossp`, `pg_trgm`, `fuzzystrmatch`
 - `security_events`: Failed logins, rate limits, unauthorized attempts.
 - `system_settings`: Platform-wide configurations and feature flags.
 - `approval_requests`: Human-in-the-loop pending approval queues.
+

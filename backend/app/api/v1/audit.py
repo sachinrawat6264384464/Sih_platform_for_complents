@@ -74,3 +74,4 @@ async def update_setting(
     await db.commit()
     await db.refresh(setting)
     return setting
+

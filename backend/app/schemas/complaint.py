@@ -92,3 +92,4 @@ class ComplaintListResponse(BaseModel):
     page: int
     limit: int
     pages: int
+

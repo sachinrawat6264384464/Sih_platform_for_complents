@@ -9,3 +9,4 @@ logging.basicConfig(
 )
 
 logger = logging.getLogger("aicte_nexus")
+

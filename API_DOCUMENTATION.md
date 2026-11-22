@@ -96,3 +96,4 @@
 |---|---|---|---|
 | `GET` | `/api/v1/audit/logs` | Query chronological audit logs with entity, action, and user filters | Yes |
 | `GET` | `/api/v1/audit/security-events` | Retrieve security-critical events (failed logins, privilege changes) | Yes |
+

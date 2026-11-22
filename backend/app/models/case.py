@@ -115,3 +115,4 @@ class CaseRelationship(Base, UUIDMixin, TimestampMixin):
     relationship_type = Column(String(50), nullable=False)  # Linked, Duplicate, Coordinated, Cross_Bureau
     confidence_score = Column(Float, nullable=True)
     notes = Column(Text, nullable=True)
+

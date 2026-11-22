@@ -7,3 +7,4 @@ from app.core.database import engine
 async def cleanup_connections():
     yield
     await engine.dispose()
+

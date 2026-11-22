@@ -66,3 +66,4 @@ async def get_execution_logs(
     query = select(MCPExecutionLog).order_by(MCPExecutionLog.created_at.desc()).limit(limit)
     logs = (await db.execute(query)).scalars().all()
     return logs
+

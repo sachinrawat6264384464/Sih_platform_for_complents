@@ -52,3 +52,4 @@ class ApprovalRequest(Base, UUIDMixin, TimestampMixin):
     payload = Column(JSONB, nullable=False)
     status = Column(String(50), default="PENDING", nullable=False, index=True)  # PENDING, APPROVED, REJECTED
     reviewer_remarks = Column(Text, nullable=True)
+

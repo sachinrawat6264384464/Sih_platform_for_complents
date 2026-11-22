@@ -43,3 +43,4 @@ class DashboardMetricsOut(BaseModel):
     bureau_workload: List[BureauWorkload]
     regional_workload: List[RegionalWorkload]
     monthly_trends: List[MonthlyTrend]
+

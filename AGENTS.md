@@ -35,3 +35,4 @@
 - `frontend/src/`: Next.js client application
 - `docs/`: Comprehensive architecture, database, integration, and security specifications
 - `skills/`: Modular engineering skills
+

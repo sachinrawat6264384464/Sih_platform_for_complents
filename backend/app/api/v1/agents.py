@@ -107,3 +107,4 @@ async def decide_approval_request(
     await db.commit()
 
     return {"message": f"Approval request marked as '{req.status}'."}
+

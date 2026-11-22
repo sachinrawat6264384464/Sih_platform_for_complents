@@ -232,3 +232,4 @@ async def generate_complaints_excel(db: AsyncSession) -> bytes:
     output = io.BytesIO()
     wb.save(output)
     return output.getvalue()
+

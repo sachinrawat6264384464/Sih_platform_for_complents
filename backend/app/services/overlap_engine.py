@@ -284,3 +284,4 @@ async def scan_complaint_for_overlaps(
         await db.commit()
 
     return created_candidates
+

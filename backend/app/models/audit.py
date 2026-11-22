@@ -35,3 +35,4 @@ class SystemSetting(Base, UUIDMixin, TimestampMixin):
     setting_value = Column(JSONB, nullable=False)
     description = Column(Text, nullable=True)
     is_public = Column(Boolean, default=False, nullable=False)
+

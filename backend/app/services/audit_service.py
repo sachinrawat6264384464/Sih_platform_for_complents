@@ -47,3 +47,4 @@ async def record_security_event(
     db.add(sec_event)
     await db.flush()
     return sec_event
+

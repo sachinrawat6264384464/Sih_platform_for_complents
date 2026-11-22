@@ -48,3 +48,4 @@ Every retrieval operation is asynchronously committed to the `retrieval_logs` da
 - Vector match count
 - Top ranked candidates with score breakdowns
 - Execution latency in milliseconds
+

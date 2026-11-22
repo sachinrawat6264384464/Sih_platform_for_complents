@@ -47,3 +47,4 @@ class OverlapCandidateListResponse(BaseModel):
     total: int
     pending_count: int
     confirmed_count: int
+

@@ -10,3 +10,4 @@ set npm_config_cache=D:\.npm-cache
 cd /d D:\sih_problm1.0\frontend
 npm run dev
 pause
+

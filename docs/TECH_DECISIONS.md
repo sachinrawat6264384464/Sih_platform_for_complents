@@ -22,3 +22,4 @@
 - **Decision**: Use the official `mcp` Python SDK (v1.x/2.x).
   - 7 specialized MCP servers: PGRC, Regulation Bureau, Institution, Complaint, Reporting, Document, and Notification.
   - Strict read-only defaults, human-in-the-loop permission checks for any mutating action, and execution audit logging.
+

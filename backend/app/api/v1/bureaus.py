@@ -88,3 +88,4 @@ async def create_region(
     await db.commit()
     await db.refresh(reg)
     return reg
+

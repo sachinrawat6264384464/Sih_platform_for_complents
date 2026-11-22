@@ -95,3 +95,4 @@ class UserUpdate(BaseModel):
     is_active: Optional[bool] = None
     role_codes: Optional[List[str]] = None
     password: Optional[str] = None
+

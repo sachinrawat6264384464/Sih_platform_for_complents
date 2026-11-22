@@ -10,3 +10,4 @@
 3. **External AICTE Portal Access**:
    - Live external AICTE bureau portals (PGRC and Regulation Bureau production endpoints) require official institutional VPN / network whitelisting and credentials.
    - *Mitigation*: Comprehensive connector architecture with simulated mock environments for automated testing, coupled with rigorous validation against production schemas when credentials are provided.
+

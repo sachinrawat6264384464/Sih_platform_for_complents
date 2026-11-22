@@ -49,3 +49,4 @@ class MCPExecutionLog(Base, UUIDMixin, TimestampMixin):
 
     # Relationships
     server = relationship("MCPServer", back_populates="execution_logs")
+

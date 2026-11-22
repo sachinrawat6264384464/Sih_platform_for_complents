@@ -49,3 +49,4 @@ class RegulationBureauConnector(BaseConnector):
             received_date=ref_dt,
             raw_payload=raw_record,
         )
+

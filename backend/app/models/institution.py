@@ -54,3 +54,4 @@ class InstitutionIdentifier(Base, UUIDMixin, TimestampMixin):
 
     # Relationships
     institution = relationship("Institution", back_populates="identifiers")
+

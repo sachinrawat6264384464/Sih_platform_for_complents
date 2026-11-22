@@ -56,3 +56,4 @@ class IntegrationSyncRunOut(BaseModel):
 
     class Config:
         from_attributes = True
+

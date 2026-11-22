@@ -31,3 +31,4 @@ description: Frontend design system, themes, water ripple effects, animated clou
    - Optional subtle monsoon rain overlay toggleable from the theme settings.
 4. **Command Palette (`Ctrl+K` / `Cmd+K`)**:
    - Instant keyboard-driven global navigation across institutions, complaints, cases, and settings.
+

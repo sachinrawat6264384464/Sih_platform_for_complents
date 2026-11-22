@@ -19,3 +19,4 @@ AICTE Nexus implements 7 core Model Context Protocol (MCP) servers using the off
 - **Default Read-Only**: Every exposed MCP tool is read-only by default.
 - **Human-in-the-Loop**: Mutating or sensitive actions (transfers, escalations, overlap confirmation) require explicit human approval via the Admin/Coordination UI.
 - **Strict Auditing**: Every tool call is logged in `mcp_execution_logs` with caller context, parameters (sanitized), latency, and status.
+

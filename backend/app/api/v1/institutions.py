@@ -125,3 +125,4 @@ async def delete_institution(
     )
     await db.commit()
     return archived
+

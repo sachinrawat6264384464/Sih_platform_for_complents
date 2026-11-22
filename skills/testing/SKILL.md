@@ -17,3 +17,4 @@ description: Comprehensive testing guidelines for backend, frontend, MCP servers
 1. Test fixtures must be explicitly marked with `TEST_DATA_` or `SYNTHETIC_`.
 2. Never rely on production database records for test assertions.
 3. Tests must run self-contained and clean up generated records.
+

@@ -104,3 +104,4 @@ class Complaint(Base, UUIDMixin, TimestampMixin):
     cases = relationship("Case", back_populates="complaint")
     status_history = relationship("CaseStatusHistory", back_populates="complaint", cascade="all, delete-orphan")
     documents = relationship("Document", back_populates="complaint", cascade="all, delete-orphan")
+

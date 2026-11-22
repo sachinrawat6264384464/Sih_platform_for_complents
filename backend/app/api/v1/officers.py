@@ -167,3 +167,4 @@ async def get_officer_out(db: AsyncSession, user_id: UUID) -> UserOut:
             for ba in u.bureau_assignments
         ]
     )
+

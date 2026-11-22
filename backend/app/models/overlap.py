@@ -42,3 +42,4 @@ class OverlapReview(Base, UUIDMixin, TimestampMixin):
     # Relationships
     candidate = relationship("OverlapCandidate", back_populates="reviews")
     reviewer = relationship("User", back_populates="reviews")
+

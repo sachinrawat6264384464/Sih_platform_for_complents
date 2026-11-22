@@ -35,3 +35,4 @@ async def execute_hybrid_query(
         institution_filter=request.institution_filter,
     )
     return results
+

@@ -30,3 +30,4 @@ api_v1_router.include_router(reports_router)
 api_v1_router.include_router(agents_router)
 api_v1_router.include_router(notifications_router)
 api_v1_router.include_router(audit_router)
+

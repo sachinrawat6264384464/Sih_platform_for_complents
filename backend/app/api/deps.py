@@ -134,3 +134,4 @@ def require_role(role_codes: List[str]) -> Callable:
             detail=f"Access denied: Requires one of roles {role_codes}",
         )
     return role_checker
+

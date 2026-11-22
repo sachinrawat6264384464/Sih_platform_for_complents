@@ -36,3 +36,4 @@ erDiagram
     
     USER ||--o{ AUDIT_LOG : "performed by"
 ```
+

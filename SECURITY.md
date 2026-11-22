@@ -53,3 +53,4 @@ Each audit entry captures:
 - **SQL Injection Defense**: 100% parameterization via SQLAlchemy 2.0 ORM and Core expressions. No raw SQL string concatenation.
 - **Input Validation**: Pydantic v2 schemas strictly validate every request body and query parameter.
 - **CORS Protection**: Explicit allowed origin whitelist (`http://localhost:3000`, `http://127.0.0.1:3000`).
+

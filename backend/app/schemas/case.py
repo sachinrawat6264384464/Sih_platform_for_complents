@@ -77,3 +77,4 @@ class CaseListResponse(BaseModel):
     page: int
     limit: int
     pages: int
+
