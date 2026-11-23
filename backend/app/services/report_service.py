@@ -1,6 +1,6 @@
 import csv
 import io
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from typing import Any, Dict, List
 import openpyxl
 from sqlalchemy import case, func, select
@@ -69,6 +69,7 @@ async def get_dashboard_metrics(db: AsyncSession) -> Dict[str, Any]:
             "bureau_code": b.code,
             "bureau_name": b.name,
             "total_complaints": total_b,
+            "count": total_b,
             "pending": pend_b,
             "under_process": proc_b,
             "disposed": disp_b,
@@ -101,10 +102,36 @@ async def get_dashboard_metrics(db: AsyncSession) -> Dict[str, Any]:
             "city": r.city,
             "total_institutions": inst_in_reg,
             "total_complaints": complaints_in_reg,
+            "count": complaints_in_reg,
             "pending": pend_in_reg,
         })
 
-    # 10. Monthly Trends (Past 6 Months from actual DB records)
+    # 10. Integration Health Details
+    connectors = (await db.execute(select(IntegrationConfig))).scalars().all()
+    integration_health_list = []
+    for c in connectors:
+        integration_health_list.append({
+            "connector_name": c.name,
+            "system_type": c.system_type,
+            "is_active": c.is_active,
+            "last_sync_time": c.last_sync_timestamp.isoformat() if c.last_sync_timestamp else None,
+            "records_synced_total": c.records_synced_total or 0,
+        })
+
+    # 11. Complaint Ageing Breakdown (from actual DB received dates)
+    age_7 = (await db.execute(select(func.count(Complaint.id)).where(Complaint.received_date >= now - timedelta(days=7)))).scalar_one()
+    age_30 = (await db.execute(select(func.count(Complaint.id)).where(Complaint.received_date < now - timedelta(days=7), Complaint.received_date >= now - timedelta(days=30)))).scalar_one()
+    age_90 = (await db.execute(select(func.count(Complaint.id)).where(Complaint.received_date < now - timedelta(days=30), Complaint.received_date >= now - timedelta(days=90)))).scalar_one()
+    age_over90 = (await db.execute(select(func.count(Complaint.id)).where(Complaint.received_date < now - timedelta(days=90)))).scalar_one()
+
+    complaint_ageing = {
+        "under_7_days": age_7,
+        "days_8_to_30": age_30,
+        "days_31_to_90": age_90,
+        "over_90_days": age_over90,
+    }
+
+    # 12. Monthly Trends (Past 6 Months from actual DB records)
     monthly_trends = [
         {"month": "Jun", "received": 12, "disposed": 10},
         {"month": "Jul", "received": 18, "disposed": 14},
@@ -129,7 +156,10 @@ async def get_dashboard_metrics(db: AsyncSession) -> Dict[str, Any]:
         "integration_health_score": integration_health,
         "bureau_workload": bureau_workload,
         "regional_workload": regional_workload,
+        "region_workload": regional_workload,
         "monthly_trends": monthly_trends,
+        "integration_health": integration_health_list,
+        "complaint_ageing": complaint_ageing,
     }
 
 

@@ -6,6 +6,7 @@ class BureauWorkload(BaseModel):
     bureau_code: str
     bureau_name: str
     total_complaints: int
+    count: Optional[int] = 0
     pending: int
     under_process: int
     disposed: int
@@ -18,6 +19,7 @@ class RegionalWorkload(BaseModel):
     city: str
     total_institutions: int
     total_complaints: int
+    count: Optional[int] = 0
     pending: int
 
 
@@ -42,5 +44,7 @@ class DashboardMetricsOut(BaseModel):
     integration_health_score: float
     bureau_workload: List[BureauWorkload]
     regional_workload: List[RegionalWorkload]
+    region_workload: Optional[List[RegionalWorkload]] = None
     monthly_trends: List[MonthlyTrend]
-
+    integration_health: Optional[List[Dict[str, Any]]] = None
+    complaint_ageing: Optional[Dict[str, int]] = None

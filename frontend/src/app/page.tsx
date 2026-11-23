@@ -233,7 +233,7 @@ export default function DashboardPage() {
             <Layers className="h-4 w-4 text-slate-400" />
           </div>
           <div className="h-64 w-full">
-            {metrics && metrics.bureau_workload.length > 0 ? (
+            {metrics?.bureau_workload && metrics.bureau_workload.length > 0 ? (
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={metrics.bureau_workload}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#1E355B" />
@@ -248,7 +248,7 @@ export default function DashboardPage() {
                       fontSize: "12px",
                     }}
                   />
-                  <Bar dataKey="count" fill="#F28C28" radius={[4, 4, 0, 0]} />
+                  <Bar dataKey="total_complaints" fill="#F28C28" radius={[4, 4, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             ) : (
@@ -273,9 +273,9 @@ export default function DashboardPage() {
             <Activity className="h-4 w-4 text-slate-400" />
           </div>
           <div className="h-64 w-full">
-            {metrics && metrics.region_workload.length > 0 ? (
+            {(metrics?.regional_workload || metrics?.region_workload) && ((metrics?.regional_workload || metrics?.region_workload)!.length > 0) ? (
               <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={metrics.region_workload}>
+                <BarChart data={metrics?.regional_workload || metrics?.region_workload}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#1E355B" />
                   <XAxis dataKey="region_name" stroke="#94A3B8" fontSize={11} />
                   <YAxis stroke="#94A3B8" fontSize={11} />
@@ -288,7 +288,7 @@ export default function DashboardPage() {
                       fontSize: "12px",
                     }}
                   />
-                  <Bar dataKey="count" fill="#1686CB" radius={[4, 4, 0, 0]} />
+                  <Bar dataKey="total_complaints" fill="#1686CB" radius={[4, 4, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             ) : (
@@ -331,7 +331,7 @@ export default function DashboardPage() {
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-800">
-              {metrics && metrics.integration_health.length > 0 ? (
+              {metrics?.integration_health && metrics.integration_health.length > 0 ? (
                 metrics.integration_health.map((conn) => (
                   <tr key={conn.connector_name} className="hover:bg-[#1E355B]/40">
                     <td className="px-4 py-3 font-semibold text-white">

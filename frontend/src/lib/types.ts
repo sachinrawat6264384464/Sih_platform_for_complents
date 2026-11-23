@@ -135,21 +135,50 @@ export interface DashboardMetrics {
   overdue_complaints: number;
   potential_overlapping_cases: number;
   confirmed_linked_cases: number;
-  bureau_workload: Array<{ bureau_name: string; count: number }>;
-  region_workload: Array<{ region_name: string; count: number }>;
-  complaint_ageing: {
+  sla_compliance_rate?: number;
+  integration_health_score?: number;
+  bureau_workload?: Array<{
+    bureau_code?: string;
+    bureau_name: string;
+    total_complaints?: number;
+    count?: number;
+    pending?: number;
+    under_process?: number;
+    disposed?: number;
+    escalated?: number;
+  }>;
+  regional_workload?: Array<{
+    region_code?: string;
+    region_name: string;
+    city?: string;
+    total_institutions?: number;
+    total_complaints?: number;
+    count?: number;
+    pending?: number;
+  }>;
+  region_workload?: Array<{
+    region_code?: string;
+    region_name: string;
+    city?: string;
+    total_institutions?: number;
+    total_complaints?: number;
+    count?: number;
+    pending?: number;
+  }>;
+  complaint_ageing?: {
     under_7_days: number;
     days_8_to_30: number;
     days_31_to_90: number;
     over_90_days: number;
   };
-  monthly_disposal_trends: Array<{ month: string; disposed: number; received: number }>;
-  sla_compliance: {
+  monthly_trends?: Array<{ month: string; disposed: number; received: number }>;
+  monthly_disposal_trends?: Array<{ month: string; disposed: number; received: number }>;
+  sla_compliance?: {
     within_sla_count: number;
     overdue_count: number;
     compliance_percentage: number;
   };
-  integration_health: Array<{
+  integration_health?: Array<{
     connector_name: string;
     is_active: boolean;
     last_sync_time?: string;
