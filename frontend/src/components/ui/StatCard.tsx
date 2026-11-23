@@ -37,11 +37,11 @@ export function StatCard({
   }[accentColor];
 
   return (
-    <div className="relative overflow-hidden rounded-xl border border-slate-700/80 bg-[#14233D] p-5 shadow-lg transition-all hover:border-slate-600 hover:shadow-cyan-900/10">
+    <div className="relative overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700/80 bg-white dark:bg-[#14233D] p-5 shadow-sm dark:shadow-lg transition-all hover:border-slate-300 dark:hover:border-slate-600 hover:shadow-md">
       <div className={`absolute top-0 right-0 h-24 w-24 bg-gradient-to-bl ${accentClasses} blur-xl pointer-events-none`} />
 
       <div className="flex items-center justify-between">
-        <span className="text-xs font-medium uppercase tracking-wider text-slate-400">
+        <span className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
           {title}
         </span>
         <div className={`flex h-10 w-10 items-center justify-center rounded-lg ${iconBgClasses}`}>
@@ -50,17 +50,17 @@ export function StatCard({
       </div>
 
       <div className="mt-3 flex items-baseline space-x-2">
-        <span className="text-2xl font-black tracking-tight text-white font-mono">
+        <span className="text-2xl font-black tracking-tight text-slate-900 dark:text-white font-mono">
           {value}
         </span>
         {trend && (
           <span
             className={`text-xs font-semibold ${
               trendDirection === "up"
-                ? "text-emerald-400"
+                ? "text-emerald-600 dark:text-emerald-400"
                 : trendDirection === "down"
-                ? "text-red-400"
-                : "text-slate-400"
+                ? "text-red-600 dark:text-red-400"
+                : "text-slate-500 dark:text-slate-400"
             }`}
           >
             {trend}
@@ -69,7 +69,7 @@ export function StatCard({
       </div>
 
       {subtitle && (
-        <p className="mt-1.5 text-xs text-slate-400">{subtitle}</p>
+        <p className="mt-1.5 text-xs text-slate-500 dark:text-slate-400">{subtitle}</p>
       )}
     </div>
   );

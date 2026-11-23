@@ -102,18 +102,18 @@ export default function MCPPage() {
       {/* Title */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-black tracking-tight text-white flex items-center gap-2">
+          <h1 className="text-2xl font-black tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
             <Cpu className="h-6 w-6 text-[#F28C28]" />
             Model Context Protocol (MCP) Runtime Console
           </h1>
-          <p className="text-xs text-slate-400 mt-1">
+          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
             Official Python SDK 2.x MCP server endpoints exposing standardized tools for AI agents and bureaus
           </p>
         </div>
 
         <button
           onClick={fetchServers}
-          className="flex items-center space-x-1.5 rounded-lg border border-slate-700 bg-[#14233D] px-3.5 py-2 text-xs font-semibold text-slate-200 hover:border-slate-600 shadow-sm"
+          className="flex items-center space-x-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-[#14233D] px-3.5 py-2 text-xs font-semibold text-slate-700 dark:text-slate-200 hover:border-slate-400 dark:hover:border-slate-600 shadow-sm"
         >
           <RefreshCw className={`h-3.5 w-3.5 ${loading ? "animate-spin" : ""}`} />
           <span>Refresh MCP Servers</span>
@@ -122,37 +122,38 @@ export default function MCPPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Left Column: Server Directory */}
-        <div className="rounded-xl border border-slate-700/80 bg-[#14233D] p-4 shadow-lg space-y-3">
-          <div className="flex items-center justify-between pb-2 border-b border-slate-700/80">
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
+        <div className="rounded-xl border border-slate-200 dark:border-slate-700/80 bg-white dark:bg-[#14233D] p-4 shadow-lg space-y-3">
+          <div className="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-slate-700/80">
+            <span className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
               Registered MCP Servers ({servers.length})
             </span>
           </div>
 
           <div className="space-y-2">
-            {servers.map((srv) => {
-              const isSelected = selectedServer?.server_id === srv.server_id;
+            {servers.map((srv, idx) => {
+              const srvId = srv.server_id || srv.name || `srv-${idx}`;
+              const isSelected = (selectedServer?.server_id || selectedServer?.name) === (srv.server_id || srv.name);
               return (
                 <button
-                  key={srv.server_id}
+                  key={srvId}
                   onClick={() => handleSelectServer(srv)}
                   className={`flex w-full flex-col rounded-lg p-3 text-left transition-all border ${
                     isSelected
-                      ? "bg-[#0B1730] border-[#F28C28] shadow-md shadow-orange-500/10"
-                      : "bg-[#14233D] border-slate-700/60 hover:border-slate-600"
+                      ? "bg-slate-100 dark:bg-[#0B1730] border-[#F28C28] shadow-md shadow-orange-500/10"
+                      : "bg-white dark:bg-[#14233D] border-slate-200 dark:border-slate-700/60 hover:border-slate-400 dark:hover:border-slate-600"
                   }`}
                 >
                   <div className="flex items-center justify-between">
-                    <span className="font-bold text-xs text-white flex items-center gap-1.5">
+                    <span className="font-bold text-xs text-slate-900 dark:text-white flex items-center gap-1.5">
                       <Box className={`h-3.5 w-3.5 ${isSelected ? "text-[#F28C28]" : "text-slate-400"}`} />
                       {srv.name}
                     </span>
-                    <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[9px] font-mono font-bold bg-emerald-950 text-emerald-400 border border-emerald-800">
+                    <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[9px] font-mono font-bold bg-emerald-100 text-emerald-800 border border-emerald-300 dark:bg-emerald-950 dark:text-emerald-400 dark:border-emerald-800">
                       ONLINE
                     </span>
                   </div>
-                  <p className="text-[11px] text-slate-400 mt-1 line-clamp-1">{srv.description}</p>
-                  <div className="mt-2 flex items-center justify-between text-[10px] text-slate-500 font-mono">
+                  <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 line-clamp-1">{srv.description}</p>
+                  <div className="mt-2 flex items-center justify-between text-[10px] text-slate-400 dark:text-slate-500 font-mono">
                     <span>Tools: {srv.tools?.length || 0}</span>
                     <span>v{srv.version}</span>
                   </div>
@@ -165,20 +166,20 @@ export default function MCPPage() {
         {/* Right 2 Columns: Tool Inspector & Live Runner */}
         <div className="lg:col-span-2 space-y-5">
           {selectedServer && (
-            <div className="rounded-xl border border-slate-700/80 bg-[#14233D] p-5 shadow-lg space-y-4">
-              <div className="flex items-center justify-between border-b border-slate-700/80 pb-3">
+            <div className="rounded-xl border border-slate-200 dark:border-slate-700/80 bg-white dark:bg-[#14233D] p-5 shadow-lg space-y-4">
+              <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-700/80 pb-3">
                 <div>
-                  <h2 className="text-sm font-bold text-white flex items-center gap-2">
+                  <h2 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
                     <Terminal className="h-4 w-4 text-[#F28C28]" />
                     Server: {selectedServer.name}
                   </h2>
-                  <p className="text-xs text-slate-400 mt-0.5">{selectedServer.description}</p>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">{selectedServer.description}</p>
                 </div>
               </div>
 
               {/* Tools Selector Tabs */}
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1.5">
+                <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
                   Available MCP Tools:
                 </label>
                 <div className="flex flex-wrap gap-2">
@@ -191,7 +192,7 @@ export default function MCPPage() {
                         className={`rounded-lg px-3 py-1.5 text-xs font-mono font-bold transition-all border ${
                           isToolActive
                             ? "bg-[#F28C28] text-white border-[#F28C28] shadow"
-                            : "bg-[#0B1730] text-slate-300 border-slate-700 hover:border-slate-500"
+                            : "bg-slate-100 dark:bg-[#0B1730] text-slate-700 dark:text-slate-300 border-slate-300 dark:border-slate-700 hover:border-slate-400 dark:hover:border-slate-500"
                         }`}
                       >
                         {tool.name}
@@ -203,21 +204,21 @@ export default function MCPPage() {
 
               {/* Selected Tool Details */}
               {selectedTool && (
-                <div className="space-y-3 border-t border-slate-700/80 pt-4">
-                  <div className="rounded-lg bg-[#0B1730] p-3 border border-slate-800">
-                    <div className="text-xs font-bold text-cyan-400 font-mono">{selectedTool.name}</div>
-                    <p className="text-xs text-slate-300 mt-1">{selectedTool.description}</p>
+                <div className="space-y-3 border-t border-slate-200 dark:border-slate-700/80 pt-4">
+                  <div className="rounded-lg bg-slate-50 dark:bg-[#0B1730] p-3 border border-slate-200 dark:border-slate-800">
+                    <div className="text-xs font-bold text-blue-600 dark:text-cyan-400 font-mono">{selectedTool.name}</div>
+                    <p className="text-xs text-slate-600 dark:text-slate-300 mt-1">{selectedTool.description}</p>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-slate-300 mb-1">
+                    <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
                       JSON Input Arguments:
                     </label>
                     <textarea
                       rows={5}
                       value={toolArgs}
                       onChange={(e) => setToolArgs(e.target.value)}
-                      className="w-full rounded-lg border border-slate-700 bg-[#0B1730] p-3 text-xs text-white font-mono focus:border-[#F28C28] focus:outline-none"
+                      className="w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-[#0B1730] p-3 text-xs text-slate-900 dark:text-white font-mono focus:border-[#F28C28] focus:outline-none"
                     />
                   </div>
 
@@ -234,19 +235,19 @@ export default function MCPPage() {
 
                   {/* Execution Response */}
                   {toolResult && (
-                    <div className="space-y-2 border-t border-slate-700/80 pt-3">
+                    <div className="space-y-2 border-t border-slate-200 dark:border-slate-700/80 pt-3">
                       <div className="flex items-center justify-between text-xs font-bold">
-                        <span className="text-emerald-400 flex items-center gap-1.5">
+                        <span className="text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5">
                           <CheckCircle2 className="h-4 w-4" />
                           MCP Protocol Response
                         </span>
                         {toolResult.latency_ms && (
-                          <span className="font-mono text-slate-400 text-[11px]">
+                          <span className="font-mono text-slate-500 dark:text-slate-400 text-[11px]">
                             {toolResult.latency_ms}ms
                           </span>
                         )}
                       </div>
-                      <pre className="max-h-64 overflow-y-auto rounded-lg bg-[#0B1730] p-3 text-[11px] text-slate-200 font-mono border border-slate-800">
+                      <pre className="max-h-64 overflow-y-auto rounded-lg bg-slate-100 dark:bg-[#0B1730] p-3 text-[11px] text-slate-800 dark:text-slate-200 font-mono border border-slate-300 dark:border-slate-800">
                         {JSON.stringify(toolResult, null, 2)}
                       </pre>
                     </div>

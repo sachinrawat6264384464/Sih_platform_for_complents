@@ -28,7 +28,7 @@ export default function RootLayout({
     <html lang="en" className="dark" suppressHydrationWarning>
       <body
         suppressHydrationWarning
-        className="min-h-screen bg-[#0B1730] text-slate-100 antialiased selection:bg-[#F28C28] selection:text-white"
+        className="min-h-screen bg-slate-50 text-slate-900 dark:bg-[#0B1730] dark:text-slate-100 antialiased selection:bg-[#F28C28] selection:text-white transition-colors duration-200"
       >
         <QueryClientProvider client={queryClient}>
           <ThemeProvider>

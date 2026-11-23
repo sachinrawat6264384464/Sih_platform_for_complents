@@ -20,9 +20,16 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const savedTheme = localStorage.getItem("aicte_nexus_theme") as Theme | null;
     if (savedTheme) {
       setThemeState(savedTheme);
-      document.documentElement.classList.toggle("dark", savedTheme === "dark");
+      if (savedTheme === "dark") {
+        document.documentElement.classList.add("dark");
+        document.documentElement.classList.remove("light");
+      } else {
+        document.documentElement.classList.remove("dark");
+        document.documentElement.classList.add("light");
+      }
     } else {
       document.documentElement.classList.add("dark");
+      document.documentElement.classList.remove("light");
     }
     setMounted(true);
   }, []);
@@ -32,8 +39,10 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     localStorage.setItem("aicte_nexus_theme", newTheme);
     if (newTheme === "dark") {
       document.documentElement.classList.add("dark");
+      document.documentElement.classList.remove("light");
     } else {
       document.documentElement.classList.remove("dark");
+      document.documentElement.classList.add("light");
     }
   };
 
@@ -42,7 +51,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   };
 
   if (!mounted) {
-    return <div className="dark bg-[#0B1730] min-h-screen text-slate-100">{children}</div>;
+    return <div className="min-h-screen">{children}</div>;
   }
 
   return (
